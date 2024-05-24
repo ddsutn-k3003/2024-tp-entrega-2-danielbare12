@@ -10,7 +10,7 @@ RUN mvn clean package assembly:single -DskipTests
 # Package stage
 #
 FROM openjdk:17-jdk-slim
-COPY --from=build /target/copiame-cli-0.0.1-SNAPSHOT-jar-with-dependencies.jar copiame.jar
+COPY --from=build /target/TPDDSApp.jar TPDDSApp.jar
 # ENV PORT=8080
 EXPOSE 8080
-ENTRYPOINT ["java","-classpath","copiame.jar","ar.utn.dds.copiame.CopiameAPI"]
+ENTRYPOINT ["java","-classpath","TPDDSApp.jar","ar.edu.utn.dds.k3003.app.WebApp"]
