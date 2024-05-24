@@ -25,7 +25,7 @@ public class ViandaController {
     var colabId = context.queryParamAsClass("colaboradorId",Long.class).get();
     var anio = context.queryParamAsClass("anio",Integer.class).get();
     var mes = context.queryParamAsClass("mes",Integer.class).get();
-    var ViandaDtoRta = this.fachada.viandasDeColaborador(colabId,mes,anio);
+    var ViandaDtoRta = this.fachada.viandasDeColaborador(colabId,mes,anio).get(0);
     context.json(ViandaDtoRta);
   }
 
