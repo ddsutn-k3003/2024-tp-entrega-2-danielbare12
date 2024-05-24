@@ -21,4 +21,6 @@ COPY --from=build /target/my-app-name-1.0-SNAPSHOT-jar-with-dependencies.jar app
 
 # Establece el puerto en el que tu aplicación escuchará
 EXPOSE 8080
+
+# Define el punto de entrada de tu aplicación
 ENTRYPOINT ["java", "-classpath", "app.jar", "ar.edu.utn.dds.k3003.app.WebApp"]
