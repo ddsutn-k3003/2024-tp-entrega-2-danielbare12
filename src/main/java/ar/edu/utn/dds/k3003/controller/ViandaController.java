@@ -15,34 +15,34 @@ public class ViandaController {
   }
 
   public void agregar(Context context){
-    var ViandaDto = context.bodyAsClass(ViandaDTO.class);
-    var ViandaDtoRta = this.fachada.agregar(ViandaDto);
-    context.json(ViandaDtoRta);
+    ViandaDTO viandaDto = context.bodyAsClass(ViandaDTO.class);
+    var viandaDtoRta = this.fachada.agregar(viandaDto);
+    context.json(viandaDtoRta);
     context.status(HttpStatus.CREATED);
   }
 
   public void buscarPorColaboradorIdMesYAnio(Context context){
-    Long colabId = Long.valueOf(context.queryParam("colaboradorId"));
-    Integer mes = Integer.valueOf(context.queryParam("colaboradorId"));
-    Integer anio = Integer.valueOf(context.queryParam("colaboradorId"));
+    var colabId = context.queryParamAsClass("colaboradorId",Long.class).get();
+    var anio = context.queryParamAsClass("anio",Integer.class).get();
+    var mes = context.queryParamAsClass("mes",Integer.class).get();
     var ViandaDtoRta = this.fachada.viandasDeColaborador(colabId,mes,anio);
     context.json(ViandaDtoRta);
   }
 
   public void buscarPorQr(Context context){
-    String qr = context.queryParam("qr");
+    var qr = context.pathParamAsClass("qr",String.class).get();
     var ViandaDtoRta = this.fachada.buscarXQR(qr);
     context.json(ViandaDtoRta);
   }
 
   public void verificarVencimiento(Context context){
-    String qr = context.queryParam("qr");
+    var qr = context.pathParamAsClass("qr",String.class).get();
     var respuesta = new Respuesta(this.fachada.evaluarVencimiento(qr));
     context.json(respuesta);
   }
 
   public void modificarHeladera(Context context){
-    String qr = context.queryParam("qr");
+    var qr = context.pathParamAsClass("qr",String.class).get();
     HeladeraDestino heladera = context.bodyAsClass(HeladeraDestino.class);
     var ViandaDtoRta = this.fachada.modificarHeladera(qr,heladera.getHeladeraDestino());
     context.json(ViandaDtoRta);

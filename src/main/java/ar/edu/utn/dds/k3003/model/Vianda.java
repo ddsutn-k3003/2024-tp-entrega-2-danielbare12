@@ -10,14 +10,14 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Vianda {
   private long id = -1;
-  private String qr;
+  private String codigoQR;
   private long colaboradorId;
   private Integer heladeraId;
   private EstadoViandaEnum estado;
   private LocalDateTime fechaElaboracion;
 
   public Vianda(String qr, long colaboradorId, Integer heladeraId, EstadoViandaEnum estado) {
-    this.qr = qr;
+    this.codigoQR = qr;
     this.colaboradorId = colaboradorId;
     this.heladeraId = heladeraId;
     this.estado = estado;

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ViandaMapper {
   public ViandaDTO map(Vianda vianda){
-    ViandaDTO viandaDTO = new ViandaDTO(vianda.getQr(),vianda.getFechaElaboracion(),vianda.getEstado(),
+    ViandaDTO viandaDTO = new ViandaDTO(vianda.getCodigoQR(),vianda.getFechaElaboracion(),vianda.getEstado(),
         vianda.getColaboradorId(), vianda.getHeladeraId());
     viandaDTO.setId(vianda.getId());
     return viandaDTO;

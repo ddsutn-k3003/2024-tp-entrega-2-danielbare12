@@ -34,7 +34,7 @@ public class ViandaRepository {
   }
 
   public Vianda findByQr(String qr){
-    Optional<Vianda> first = this.viandas.stream().filter(v -> v.getQr().equals(qr)).findFirst();
+    Optional<Vianda> first = this.viandas.stream().filter(v -> v.getCodigoQR().equals(qr)).findFirst();
     return first.orElseThrow(() -> new NoSuchElementException(
         String.format("No hay una ruta de qr: %s", qr)
     ));
